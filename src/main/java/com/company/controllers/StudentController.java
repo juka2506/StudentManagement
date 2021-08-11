@@ -129,20 +129,20 @@ public class StudentController {
         }
     }
 
-    public static void editStudentsScore() {
+    public static void editScore() {
         System.out.print("Enter the student's id: ");
         int id = scanner.nextInt();
 
         System.out.print("Which score you would like to edit: Mathematics, English or both? ");
-        String answer = scanner.next();
+        String subject = scanner.next();
 
-        switch (answer) {
+        switch (subject) {
             case "Mathematics":
                 System.out.print("Please enter new Mathematics score for student " + id + ": ");
                 int newMathScore = scanner.nextInt();
                 try {
                     ps = DBConnection.getConnection().prepareStatement("UPDATE scores " +
-                            "SET  Mathematics = " + newMathScore +
+                            "SET " + subject + " = " + newMathScore +
                             " WHERE student_id = " + id);
                     ps.execute();
                     System.out.println("Successfully updated Mathematics score for student " + id);
@@ -181,7 +181,7 @@ public class StudentController {
         }
     }
 
-    public static boolean removeStudent() {
+    public static boolean deleteStudent() {
         System.out.print("Enter the student's id: ");
         int id = scanner.nextInt();
 
@@ -198,7 +198,7 @@ public class StudentController {
 
     }
 
-    public static void editStudentsDetails() {
+    public static void editStudent() {
         System.out.print("Enter the student's id: ");
         int id = scanner.nextInt();
 
